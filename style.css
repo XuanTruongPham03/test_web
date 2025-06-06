@@ -5,8 +5,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .container {
-  max-width: 620px;
+  max-width: 700px;
   margin: 32px auto;
   background: #fff;
   border-radius: 18px;
@@ -21,21 +22,24 @@ h1 {
   letter-spacing: 2px;
   font-size: 2rem;
 }
-h1 .fa-heart { color: #ff6584; }
+h1 .fa-heart {
+  color: #ff6584;
+}
 
 .timeline {
   margin-bottom: 40px;
 }
+
 .milestone {
   margin-bottom: 28px;
-  /* center */
-  text-align: center;
 }
+
 .milestone h2 {
   color: #ff6584;
   margin-bottom: 8px;
   font-size: 1.2rem;
 }
+
 .milestone p {
   font-style: italic;
   color: #a05a8c;
@@ -47,69 +51,119 @@ h1 .fa-heart { color: #ff6584; }
   margin-top: 40px;
   text-align: center;
 }
+
 .photos-section h2 {
   color: #ba4470;
   margin-bottom: 16px;
   font-size: 1.3rem;
 }
 
+/* Slider container rộng bằng container */
 .slider-container {
-  position: relative;
-  max-width: 400px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto 8px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  gap: 10px;
 }
+
+/* Slider chiếm toàn bộ chiều rộng container */
 .slider {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  gap: 14px;
-  max-width: 340px;
-  padding: 8px 0;
+  gap: 18px;
+  width: 100%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  /* Ẩn scroll bar */
+  scrollbar-width: none;
 }
+
 .slider::-webkit-scrollbar {
   display: none;
 }
+
+/* Ảnh cao 80% chiều cao container, responsive */
 .slider img {
-  height: 380px;
+  height: 80vh; /* 80% chiều cao màn hình */
+  max-height: 640px; /* không vượt quá 640px */
   aspect-ratio: 2/3;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(100,40,60,0.10);
+  border-radius: 18px;
+  box-shadow: 0 3px 18px rgba(100,40,60,0.11);
   background: #e5e5e5;
-  transition: transform 0.2s;
   width: auto;
   flex-shrink: 0;
+  transition: transform 0.2s;
 }
+
+/* Nút chuyển slide dưới slider */
 .slider-btn {
   background: #fff7fa;
   border: 2px solid #e7bcd2;
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 1.3rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.45rem;
   color: #e75480;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 6px rgba(100,40,60,0.08);
   z-index: 10;
+  margin: 0 12px;
 }
+
 .slider-btn:hover {
   background: #ffe0ef;
   border-color: #ff9abe;
 }
 
-.photos-note {
-  color: #b88eaa;
-  font-size: 0.97rem;
-  margin-top: 10px;
+/* Nút chuyển xuống dưới slider */
+.slider-container {
+  flex-direction: column;
 }
 
+.slider-btn.left,
+.slider-btn.right {
+  order: 2;
+}
+
+.slider {
+  order: 1;
+}
+
+.slider-btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+/* Responsive mobile */
 @media (max-width: 600px) {
-  .slider img { height: 280px; }
-  .container { padding: 12px 2px; }
-  .slider { max-width: 92vw; }
+  .container {
+    padding: 12px 2px;
+  }
+  .slider img {
+    height: 60vh;
+    max-height: 380px;
+  }
+  .slider {
+    gap: 10px;
+  }
+  .slider-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+    margin: 0 6px;
+  }
+  .slider-btn-group {
+    gap: 12px;
+    margin-top: 6px;
+  }
 }
